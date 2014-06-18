@@ -1,0 +1,47 @@
+! urxvt settings ----------------------------------
+!URxvt*termName: screen-256color
+URxvt.scrollBar:            false
+URxvt.scrollStyle:          rxvt
+URxvt.font:                 xft:Terminus:pixelsize=14
+URxvt*letterSpace:          0
+URxvt.externalBorder:       0
+URxvt.saveLines:            0
+URxvt*perl-ext:
+URxvt*perl-ext-common:
+!URxvt.cursorColor:
+
+*background: #3a3a3a
+*foreground: #d7d7d7
+! *color0:  #1E2320
+*color0:  #3a3a3a
+*color1:  #705050
+! *color2:  #60b48a
+*color2:  #87af87
+*color3:  #dfaf8f
+*color4:  #506070
+*color5:  #dc8cc3
+! *color6:  #8cd0d3
+*color6:  #87d7d7
+*color7:  #dcdccc
+*color8:  #709080
+*color9:  #dca3a3
+*color10: #c3bf9f
+*color11: #f0dfaf
+*color12: #94bff3
+*color13: #ec93d3
+*color14: #93e0e3
+*color15: #ffffff
+
+NetHack.tile_file: /home/antman/X11tiles-32-32.xpm
+NetHack*autofocus: true
+NetHack*Scrollbar*foreground: black
+NetHack*Scrollbar*background: black
+NetHack*background: black
+NetHack*foreground: grey
+NetHack*status_info*foreground: grey
+NetHack*status_info*background: black
+NetHack*status_info.background: black
+NetHack*status_condition*background: black
+NetHack*map*background: black
+NetHack*status_attributes*foreground: grey
+NetHack*status_attributes*background: black

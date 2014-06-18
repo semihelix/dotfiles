@@ -1,0 +1,27 @@
+"1.1
+
+loadplugins '\.(js|penta)$'
+group user
+" Only status/cmdline
+set guioptions=Cs
+set showtabline=never
+set defsearch=startpage-ssl
+set editor='st -e vim -f +<line> +"sil! call cursor(0, <column>)" <file>'
+
+" Highlight search
+set hlfind
+
+map , <Leader>
+" Input field binds
+imap -builtin <C-A> <C-T>$<Esc>
+imap -builtin <C-D><C-D> <C-T>dd<Esc>
+" Normal binds
+nmap -builtin <C-L> :tabnext<CR>
+nmap -builtin <C-H> :tabprevious<CR>
+nmap -builtin <Leader> :noh<CR>
+nmap -builtin ; :
+nmap -builtin : ;
+nmap -builtin j 3j
+nmap -builtin k 3k
+
+" vim: set ft=pentadactyl:
