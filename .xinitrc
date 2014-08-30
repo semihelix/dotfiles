@@ -6,6 +6,9 @@ xrdb -merge ~/.Xresources &
 # set caps to esc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
+# acticates numlock
+numlockx &
+
 # sync clipboards
 autocutsel &
 autocutsel -s PRIMARY & 

@@ -1,3 +1,11 @@
+# Default settings
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+# eof Default
+
+
 # Use Vi, not Emacs, style editing
 set editing-mode vi
 
@@ -46,3 +54,5 @@ TAB: menu-complete
 # Needed because binding 'p' in command mode above wipes its insert mode
 # function, too. This fixes that, and will insert 'p' when you type 'p'.
 "p": self-insert
+
+"": "clear\r"
