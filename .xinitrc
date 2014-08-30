@@ -15,6 +15,7 @@ autocutsel -s PRIMARY &
 
 # Load BG
 . ~/.fehbg &
+conky &
 
 # Set keyboard keypress rate & kill bell
 xset r rate 250 25 &

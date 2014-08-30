@@ -2,6 +2,6 @@
 
 for file in ./.*; do
   if [ -f $file ]; then
-    ln -s $file ~
+    ln -fs ~/dotfiles/$file ~
   fi
 done
