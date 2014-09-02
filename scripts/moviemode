@@ -1,0 +1,31 @@
+#!/bin/bash
+# Disable conky and composite manager
+# for better move experience
+
+start() {
+  pkill xcompmgr
+  pkill conky
+  conky -t " " -q &
+  exit
+}
+
+stop() {
+  pkill conky
+  conky -q &
+  xcompmgr &
+  exit
+}
+
+help() {
+  echo "Movie Mode:"
+  echo "   (re)start: moviemode"
+  echo "   stop:      moviemode -s"
+  exit
+}
+
+
+case "$1" in
+  "")   start ;;
+"-s")   stop ;;
+    *)  help ;;
+  esac

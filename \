@@ -1,0 +1,2 @@
+#!/bin/bash
+youtube-dl ytsearch:"$*" -o -u antyman@hotmail.com -p 20203481 - | mplayer -
