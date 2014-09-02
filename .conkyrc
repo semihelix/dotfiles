@@ -23,7 +23,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-alignment top_left
+alignment bottom_left
 background no
 border_width 1
 cpu_avg_samples 2
@@ -37,8 +37,8 @@ draw_shades no
 use_xft yes
 xftfont Terminus:size=10
 gap_x 4
-gap_y 1064
-minimum_size 5 5
+gap_y 3
+minimum_size 1920 5
 net_avg_samples 2
 no_buffers yes
 double_buffer yes
@@ -56,4 +56,4 @@ show_graph_scale no
 show_graph_range no
 
 TEXT
-${alignc}$nodename ${color dodgerblue}Uptime:${color white} $uptime_short ${color dodgerblue}| CPU:${color dodgerblue} ${color white}${cpu}%${color dodgerblue} | RAM: ${color white}$memperc% ${color dodgerblue}| FS: ${color lightgrey}${fs_used /}/${fs_size /}${color dodgerblue} | /home: ${color lightgrey}${fs_used /home}/${fs_size /home}${color dodgerblue} | Network:${color white} ${wireless_essid wlo1} ${color dodgerblue}| IP: ${color white}${execi 3600 curl icanhazip.com} ${color dodgerblue}| Volume:${color white} ${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% ${color dodgerblue}| Date:${color white} ${time}
+$nodename ${color chocolate}Uptime:${color white} $uptime_short ${color chocolate}| CPU:${color chocolate} ${color white}${cpu}%${color chocolate} | RAM: ${color white}$memperc% ${color chocolate}| FS: ${color lightgrey}${fs_used /}/${fs_size /}${color chocolate} | /home: ${color lightgrey}${fs_used /home}/${fs_size /home}${color chocolate} | Network:${color white} ${wireless_essid wlo1} ${color chocolate}| IP: ${color white}${execi 3600 curl icanhazip.com} ${color chocolate}| Volume:${color white} ${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% ${color chocolate}| Date:${color white} ${time}

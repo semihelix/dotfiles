@@ -8,20 +8,19 @@ URxvt.externalBorder:       0
 URxvt.saveLines:            0
 URxvt*perl-ext:
 URxvt*perl-ext-common:
-!URxvt.cursorColor:
-!
 URxvt.urgentOnBell:         true
-
+! URxvt*depth: 32
+! URxvt*background: rgba:0000/0000/0200/c800
+!
+! URxvt.cursorColor:
 ! URxvt*.transparent: true
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
 ! URxvt*.shading: 110
-
 
 !Man page colors
 URxvt.colorIT:      #87af5f
 URxvt.colorBD:      #dc8cc3
 URxvt.colorUL:      #87d7d7
-
 
 *background: #3a3a3a
 *foreground: #d7d7d7

@@ -154,6 +154,10 @@ if has ("win32")
   set shell=C:\RailsInstaller\Git\bin\bash.exe\ --login\ -i
 endif
 
+" Vim aliases
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " Vim Mappings
 let mapleader = ","
 let g:mapleader = ","
@@ -190,7 +194,7 @@ nnoremap <F5> :MBEToggle<CR>
 
 " Plugin Settings
 " Airline enable tabs and dont show buffs, min 2 tabs needed added powerline fonts!
-"let g:airline_theme="morokai"
+"let g:airline_theme="monochrome"
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
@@ -206,12 +210,14 @@ let g:miniBufExplBRSplit=0
 "
 " MiniBufExpl molokai 256 Colors
 " hi MBEChanged guibg=darkblue ctermbg=darkblue termbg=white
-hi MBENormal               guifg=#808080 guibg=bg ctermfg=244 ctermbg=bg
-hi MBEChanged              guifg=#CD5907 guibg=bg ctermfg=208 ctermbg=bg
-hi MBEVisibleNormal        guifg=#5DC2D6 guibg=bg ctermfg=81 ctermbg=bg
-hi MBEVisibleChanged       guifg=#F1266F guibg=bg ctermfg=199 ctermbg=bg
-hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=bg ctermfg=118 ctermbg=bg
-hi MBEVisibleActiveChanged guifg=#F1266F guibg=bg ctermfg=199 ctermbg=bg
+if &t_Co == 256 || has("gui_running")
+  hi MBENormal               guifg=#808080 guibg=bg ctermfg=244 ctermbg=bg
+  hi MBEChanged              guifg=#CD5907 guibg=bg ctermfg=208 ctermbg=bg
+  hi MBEVisibleNormal        guifg=#5DC2D6 guibg=bg ctermfg=81 ctermbg=bg
+  hi MBEVisibleChanged       guifg=#F1266F guibg=bg ctermfg=199 ctermbg=bg
+  hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=bg ctermfg=118 ctermbg=bg
+  hi MBEVisibleActiveChanged guifg=#F1266F guibg=bg ctermfg=199 ctermbg=bg
+endif
 
 " Easymotion, set to single leader key
 let g:EasyMotion_leader_key = '<Leader>'
@@ -235,23 +241,23 @@ let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 "  TMUX line use powerline font
 "let g:tmuxline_powerline_separators = 1
 "let g:tmuxline_preset = {
-      "\'a'    : '#S',
-      "\'cwin' : ['#I #W'],
-      "\'win'  : ['#I #W'],
-      "\'y'    : [' %a %d %b %Y'],
-      "\'z'    : '#H',
-      "\'options' : {'status-justify' : 'left'}}
+"\'a'    : '#S',
+"\'cwin' : ['#I #W'],
+"\'win'  : ['#I #W'],
+"\'y'    : [' %a %d %b %Y'],
+"\'z'    : '#H',
+"\'options' : {'status-justify' : 'left'}}
 
 "call tmuxline#api#set_theme({
-      "\ 'a': ['232', '208', ''],
-      "\ 'b': ['253', '16', ''],
-      "\ 'bg': ['240', '234', ''],
-      "\ 'c': ['253', '238', ''],
-      "\ 'cwin': ['253', '16', ''],
-      "\ 'win': ['253', '238', ''],
-      "\ 'x': ['253', '236', ''],
-      "\ 'y': ['253', '16', ''],
-      "\ 'z': ['232', '208', '']})
+"\ 'a': ['232', '208', ''],
+"\ 'b': ['253', '16', ''],
+"\ 'bg': ['240', '234', ''],
+"\ 'c': ['253', '238', ''],
+"\ 'cwin': ['253', '16', ''],
+"\ 'win': ['253', '238', ''],
+"\ 'x': ['253', '236', ''],
+"\ 'y': ['253', '16', ''],
+"\ 'z': ['232', '208', '']})
 
 " VIM functions
 if !exists("*TrimWhiteSpace")

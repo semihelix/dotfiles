@@ -5,6 +5,15 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# True trans
+case "$TERM" in
+  xterm*|rxvt*)
+      transset-df -a 0.85 >/dev/null
+      ;;
+  *)
+      ;;
+esac
+
 # Only show 3 dirs in prompt
 PROMPT_DIRTRIM=3
 
@@ -19,6 +28,7 @@ shopt -s globstar
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias la='ls -a'
+alias l='ls -CF'
 alias rm='rm -I'
 alias grep='grep --color=auto'
 
