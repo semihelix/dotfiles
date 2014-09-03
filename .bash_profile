@@ -3,5 +3,5 @@
 #
 
 export EDITOR=vim
-PATH=$PATH:/home/antman/opt/bin
+PATH=$PATH:/home/antman/bin
 [[ -f ~/.bashrc ]] && . ~/.bashrc

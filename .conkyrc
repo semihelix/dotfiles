@@ -1,59 +1,19 @@
-# Conky, a system monitor, based on torsmo
-#
-# Any original torsmo code is licensed under the BSD license
-#
-# All code written since the fork of torsmo is licensed under the GPL
-#
-# Please see COPYING for details
-#
-# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
-# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
-# All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-
-alignment bottom_left
 background no
-border_width 1
-cpu_avg_samples 2
-default_color white
-default_outline_color white
-default_shade_color white
-draw_borders no
-draw_graph_borders yes
-draw_outline no
-draw_shades no
-use_xft yes
-xftfont Terminus:size=10
-gap_x 4
-gap_y 3
-minimum_size 1920 5
-net_avg_samples 2
-no_buffers yes
-double_buffer yes
-out_to_console no
-out_to_stderr no
-extra_newline no
-own_window yes
-own_window_class Conky
-own_window_type override
-stippled_borders 0
+out_to_console yes
+out_to_x no
 update_interval 1.0
-uppercase no
+total_run_times 0
 use_spacer none
-show_graph_scale no
-show_graph_range no
+lua_load ~/dotfiles/scripts/conky_lua_scripts.lua
 
 TEXT
-$nodename ${color chocolate}Uptime:${color white} $uptime_short ${color chocolate}| CPU:${color chocolate} ${color white}${cpu}%${color chocolate} | RAM: ${color white}$memperc% ${color chocolate}| FS: ${color lightgrey}${fs_used /}/${fs_size /}${color chocolate} | /home: ${color lightgrey}${fs_used /home}/${fs_size /home}${color chocolate} | Network:${color white} ${wireless_essid wlo1} ${color chocolate}| IP: ${color white}${execi 3600 curl icanhazip.com} ${color chocolate}| Volume:${color white} ${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% ${color chocolate}| Date:${color white} ${time}
+^fg(white)$uptime_short \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/arch_10x10.xbm) ^fg(white)${kernel} \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/pacman.xbm) ^fg(white)${execi 3600 checkupdates | wc -l | xargs printf "%02d"} \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/cpu.xbm) ^fg(white)${lua_parse format %02d $cpu}% \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/mem.xbm) ^fg(white)${lua_parse format %02d $memperc}% \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/diskette.xbm) ^fg(white)${fs_free /home} \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/net_wired.xbm) ^fg(white)${execi 3600 curl icanhazip.com} \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/wireless5.xbm) ^fg(white)${wireless_essid wlo1} \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/spkr_01.xbm) ^fg(white)${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*" | xargs printf "%03d\n"}% \
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/clock.xbm) ^fg(white)${time %T}

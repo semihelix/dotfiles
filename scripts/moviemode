@@ -5,13 +5,12 @@
 start() {
   pkill xcompmgr
   pkill conky
-  conky -t " " -q &
+  pkill dzen2
   exit
 }
 
 stop() {
-  pkill conky
-  conky -q &
+  dzen-conky.sh &
   xcompmgr &
   exit
 }

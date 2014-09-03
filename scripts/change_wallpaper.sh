@@ -11,8 +11,8 @@ size=$(( $(ls -l $wp_path | wc -l) -1 ))
 
 randomize() {
   index=$(( $RANDOM%$size ))
-  [ -f ~/opt/bin/.change_wallpaper.storage ] &&
-  read last_index < ~/opt/bin/.change_wallpaper.storage &&
+  [ -f ~/bin/.change_wallpaper.storage ] &&
+  read last_index < ~/bin/.change_wallpaper.storage &&
   while [[ $index -eq $last_index ]]; do
       index=$(( $RANDOM%$size ))
   done
@@ -26,8 +26,8 @@ case "$size" in
 esac
 
 
-echo $index > ~/opt/bin/.change_wallpaper.storage
+echo $index > ~/bin/.change_wallpaper.storage
 cp ${array[$index]} ~/media/wallpapers/wallpaper.jpg
-. ~/.fehbg
+env DISPLAY=:0 /bin/bash ~/.fehbg
 
 

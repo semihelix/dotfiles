@@ -6,13 +6,13 @@
 [[ $- != *i* ]] && return
 
 # True trans
-case "$TERM" in
-  xterm*|rxvt*)
-      transset-df -a 0.85 >/dev/null
-      ;;
-  *)
-      ;;
-esac
+#case "$TERM" in
+  #xterm*|rxvt*|screen*)
+      #transset-df -a 0.85 >/dev/null
+      #;;
+  #*)
+      #;;
+#esac
 
 # Only show 3 dirs in prompt
 PROMPT_DIRTRIM=3
