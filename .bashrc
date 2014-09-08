@@ -5,15 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# True trans
-#case "$TERM" in
-  #xterm*|rxvt*|screen*)
-      #transset-df -a 0.85 >/dev/null
-      #;;
-  #*)
-      #;;
-#esac
-
 # Only show 3 dirs in prompt
 PROMPT_DIRTRIM=3
 
@@ -31,7 +22,8 @@ alias la='ls -a'
 alias l='ls -CF'
 alias rm='rm -I'
 alias grep='grep --color=auto'
-
+alias egrep='egrep --color=auto'
+alias fbchat="ssh antman.it -t tmux attach -t profanity"
 
 # PROMPT
 

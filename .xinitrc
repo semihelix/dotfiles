@@ -26,4 +26,6 @@ dzen-conky.sh &
 xset r rate 250 25 &
 xset b off &
 
+~/bin/tmux-daemon.sh &
+
 exec spectrwm

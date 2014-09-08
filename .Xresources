@@ -2,7 +2,7 @@
 !URxvt*termName: screen-256color
 URxvt.scrollBar:            false
 URxvt.scrollStyle:          rxvt
-URxvt.font:                 xft:Terminus:pixelsize=24
+URxvt.font:                 xft:Terminus:pixelsize=18
 URxvt*letterSpace:          0
 URxvt.externalBorder:       0
 URxvt.saveLines:            0

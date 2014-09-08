@@ -3,7 +3,7 @@
 # for better move experience
 
 start() {
-  pkill xcompmgr
+  pkill compton
   pkill conky
   pkill dzen2
   exit
@@ -11,7 +11,7 @@ start() {
 
 stop() {
   dzen-conky.sh &
-  xcompmgr &
+  compton &
   exit
 }
 

@@ -86,7 +86,7 @@ set encoding=utf-8
 set wildmenu                    " Enable wildmode, commandline autocomplete
 set wildmode=full               " Sets behaviour to 'full'
 set modelines=5                 " Enable modelines, # vim: option=setting :
-set clipboard=unnamedplus       " Set clipboard to X clipboard
+set clipboard=unnamed,unnamedplus " Set clipboard to X clipboard
 
 " Display
 syntax on                       " Set syntax highlight
