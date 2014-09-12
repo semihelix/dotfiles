@@ -7,25 +7,26 @@
 xrdb -merge ~/.Xresources &
 
 # Load eye candy
-compton &
+sleep 1s && compton &
+
+~/bin/autostart.sh &
 
 # set caps to esc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
-# acticates numlock
+# Set  numlock on
 numlockx &
 
 # sync clipboards
 autocutsel &
 autocutsel -s PRIMARY &
 
-# Load conky bar
-dzen-conky.sh &
+# Set mouse pointer
+xsetroot -cursor_name left_ptr &
 
 # Set keyboard keypress rate & kill bell
 xset r rate 250 25 &
 xset b off &
 
-~/bin/tmux-daemon.sh &
 
-exec spectrwm
+exec xmonad

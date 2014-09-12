@@ -16,4 +16,4 @@ TEXT
 ^fg(chocolate)^i(/home/antman/dotfiles/dzen2/net_wired.xbm) ^fg(white)${execi 3600 curl icanhazip.com} \
 ^fg(chocolate)^i(/home/antman/dotfiles/dzen2/wireless5.xbm) ^fg(white)${wireless_essid wlo1} \
 ^fg(chocolate)^i(/home/antman/dotfiles/dzen2/spkr_01.xbm) ^fg(white)${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*" | xargs printf "%03d\n"}% \
-^fg(chocolate)^i(/home/antman/dotfiles/dzen2/clock.xbm) ^fg(white)${time %T}
+^fg(chocolate)^i(/home/antman/dotfiles/dzen2/clock.xbm) ^fg(white)${time %T }

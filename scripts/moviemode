@@ -4,13 +4,10 @@
 
 start() {
   pkill compton
-  pkill conky
-  pkill dzen2
   exit
 }
 
 stop() {
-  dzen-conky.sh &
   compton &
   exit
 }
