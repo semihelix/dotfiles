@@ -7,7 +7,7 @@
 xrdb -merge ~/.Xresources &
 
 # Load eye candy
-sleep 1s && compton &
+sleep 2s && compton &
 
 ~/bin/autostart.sh &
 

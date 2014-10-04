@@ -7,7 +7,6 @@ import XMonad.Actions.Promote           -- Promote similar to DWM
 import XMonad.Layout.NoBorders          -- No borders for single window
 import XMonad.Layout.PerWorkspace       -- Configure layout per WS
 import XMonad.Layout.Grid               --
-import XMonad.Layout.Cross              --
 -- Status bar
 import XMonad.Hooks.DynamicLog          -- Enable logging to statusbar
 import XMonad.Hooks.InsertPosition      -- Insert new win below master
@@ -25,9 +24,11 @@ main = do
 
     xmonad $ defaultConfig
       { terminal            = "urxvt"
+      , focusFollowsMouse   = False
+      , clickJustFocuses    = True
       , workspaces          = myWorkspaces
       , startupHook         = myStartupHook
-      , manageHook          = myManageHook <+> insertPosition Below Newer <+> manageSpawn <+> manageDocks
+      , manageHook          = myManageHook <+> insertPosition Below Newer <+> manageDocks
       , layoutHook          = myLayoutHook
       , logHook             = myLogHook status
       , keys                = myKeys
@@ -60,9 +61,9 @@ spawnToWorkspace program workspace = do
 myStartupHook = do
     spawn  "urxvt -name WS1 -e attach-t.sh system"
     spawn  "urxvt -name WS3 -e attach-t.sh editor"
-    spawn  "urxvt -name WS4 -e attach-t.sh chat"
+    spawn  "urxvt -name WS4 -e attach-t.sh chat1"
+    spawn  "urxvt -name WS4 -e attach-t.sh chat2"
     spawn  "urxvt -name WS5 -e ncmpcpp"
-    spawn  "urxvt -name WS5 -e ncmpcpp -s visualizer"
     spawn  "urxvt -name WS5 -e ranger"
     spawn  "claws-mail"
     spawn  "firefox"
@@ -92,11 +93,11 @@ myLayout = avoidStruts(smartBorders(tiled ||| Mirror tiled ||| Grid ||| Full))
      where
          tiled = Tall 1 (3/100) (1/2)
 
-myLayoutChat = avoidStruts(smartBorders(Grid ||| simpleCross ||| Full))
+myLayoutChat = avoidStruts(smartBorders(Mirror tiled ||| Grid ||| Full))
      where
          tiled = Tall 1 (3/100) (1/2)
 
-myLayoutMedia = smartBorders(Mirror tiled ||| Full)
+myLayoutMedia = smartBorders(Full ||| Mirror tiled)
      where
          tiled = Tall 1 (3/100) (1/2)
 
@@ -104,8 +105,8 @@ myLayoutMedia = smartBorders(Mirror tiled ||| Full)
 myLogHook h = dynamicLogWithPP $ myDzenPP { ppOutput = hPutStrLn h }
 
 -- Soawn dzeb & conky
-myDzenStatus = "dzen2 -w '1120' -ta 'l'" ++ myDzenStyle
-myDzenConky  = "conky | dzen2 -x '1120' -w '800' -ta 'r'" ++ myDzenStyle
+myDzenStatus = "dzen2 -w '750' -ta 'l'" ++ myDzenStyle
+myDzenConky  = "conky | dzen2 -x '750' -w '850' -ta 'r'" ++ myDzenStyle
 
 -- Bar style 24px high and colors
 myDzenStyle  = " -h '24' -y '0' -fg '#777777' -bg '#222222' -fn terminus -e 'onstart=lower'"
@@ -113,21 +114,21 @@ myDzenStyle  = " -h '24' -y '0' -fg '#777777' -bg '#222222' -fn terminus -e 'ons
 -- Very plain formatting, non-empty workspaces are highlighted,
 -- urgent workspaces (e.g. active IM window) are highlighted in red
 myDzenPP  = dzenPP
-    { ppCurrent = dzenColor "chocolate" "" . wrap " " " "
-    , ppHidden  = dzenColor "#dddddd" "" . wrap " " " "
-    , ppHiddenNoWindows = dzenColor "#777777" "" . wrap " " " "
-    , ppUrgent  = dzenColor "#ff0000" "" . wrap " " " "
-    , ppSep     = "   "
-    , ppTitle   = dzenColor "#ffffff" "" . wrap " " " "
-    , ppLayout  = dzenColor "chocolate" "" .
-                      (\x -> case x of
-                          "Tall"             ->      wrapBitmap "layout_tall.xbm"
-                          "Mirror Tall"      ->      wrapBitmap "layout_mirror_tall.xbm"
-                          "Full"             ->      wrapBitmap "layout_full.xbm"
-                          "Grid"             ->      wrapBitmap "grid.xbm"
-                          "Cross"            ->      wrapBitmap "test.xbm"
-                          _                  ->      x
-                      )
+    { ppCurrent         = dzenColor "chocolate" "" . wrap " " " "
+    , ppHidden          = dzenColor "#dddddd"   "" . wrap " " " "
+    , ppHiddenNoWindows = dzenColor "#777777"   "" . wrap " " " "
+    , ppUrgent          = dzenColor "#ff0000"   "" . wrap " " " "
+    , ppSep             = "   "
+    , ppTitle           = dzenColor "#ffffff"   "" . wrap " " " "
+    , ppLayout          = dzenColor "chocolate" "" .
+                           (\x -> case x of
+                              "Tall"             ->      wrapBitmap "layout_tall.xbm"
+                              "Mirror Tall"      ->      wrapBitmap "layout_mirror_tall.xbm"
+                              "Full"             ->      wrapBitmap "layout_full.xbm"
+                              "Grid"             ->      wrapBitmap "grid.xbm"
+                              "Cross"            ->      wrapBitmap "test.xbm"
+                              _                  ->      x
+                           )
     }
 
 -- Key bindings. Add, modify or remove key bindings here.
@@ -206,6 +207,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    -- Volume
+    , ((0, 0x1008FF11                ), spawn "amixer set Master 2-")
+    , ((0, 0x1008FF13                ), spawn "amixer set Master 2+")
+    , ((0, 0x1008FF12                ), spawn "amixer set Master toggle")
+
     ]
     ++
 
